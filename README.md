@@ -5,9 +5,10 @@
 </p>
 
 <br>
+<br>
 
 <p align="center">
-  <img alt="watson" src="https://img.shields.io/badge/watson-1.0.0-green.svg?style=for-the-badge"/>
+  <img alt="watson" src="https://img.shields.io/badge/watson-1.0.0-blue.svg?style=for-the-badge"/>
 </p>
 
 <br>
@@ -45,3 +46,9 @@ npm run build
 #6. Run end-to-end tests
 npm run test:e2e
 ```
+
+<br>
+
+### Get sketch file
+
+Sketch raw file is accessible [here](./design) if you are interested about this design. Besides, remember to install fonts firstly
