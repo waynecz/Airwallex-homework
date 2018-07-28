@@ -7,16 +7,14 @@
 <br>
 
 <p align="center">
-  <img alt="GitHub release" src="https://img.shields.io/badge/release-v1.0.0-orange.svg?style=for-the-badge"/>
-  <img alt="poi" src="https://img.shields.io/badge/poi-10-green.svg?style=for-the-badge"/>
-  <img alt="Bili" src="https://img.shields.io/badge/bili-3-blue.svg?style=for-the-badge"/>
+  <img alt="watson" src="https://img.shields.io/badge/watson-1.0.0-green.svg?style=for-the-badge"/>
 </p>
 
 <br>
 
 <p align="center">
   <b>
-    <a href="https://broccoli.grisoso.com">Preview site Online</a>
+    <a href="https://broccoli.grisoso.com">Preview site online</a>
   </b>
 </p>
 
@@ -25,11 +23,12 @@
 ### Project setup
 
 ```bash
-#1. Parse dev.grisoso.com to your localhost
-vi /etc/hosts
+#1. Link dev.grisoso.com with your localhost
+# It's vital or you'll not be allowed to access images
+sudo vi /etc/hosts
 
 #...
-# 127.0.0.1     dev.grisoso.com
+# 127.0.0.1    dev.grisoso.com
 #...
 
 #2. Install dependencies
@@ -38,7 +37,7 @@ npm install
 #3. Run dev-server
 npm run serve
 
-#4. Open dev.grisoso.com:8080
+#4. Open http://dev.grisoso.com:8080
 
 #5. Compiles and minifies for production
 npm run build
