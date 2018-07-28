@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="237" height="54" viewBox="0 0 237 54">
+  <defs>
+    <text id="logo-b" fill="#FFF" font-family="LEIXO-DEMO, LEIXO" font-size="45">
+      <tspan x="14" y="45">B</tspan>
+    </text>
+    <filter id="logo-a" width="179.3%" height="142.6%" x="-39.7%" y="-12%" filterUnits="objectBoundingBox">
+      <feOffset dy="5" in="SourceAlpha" result="shadowOffsetOuter1"/>
+      <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="3"/>
+      <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.363536005 0"/>
+    </filter>
+  </defs>
+  <g fill="none" fill-rule="evenodd" transform="translate(0 -3)">
+    <text font-family="LEIXO-DEMO, LEIXO" font-size="37">
+      <tspan x="64" y="44" fill="#2F2F2F">ROC</tspan> <tspan x="146.066" y="44" fill="#141414">COLI</tspan>
+    </text>
+    <rect width="54" height="54" y="3" fill="#193BC9" rx="27"/>
+    <g fill="#FFF">
+      <use filter="url(#logo-a)" xlink:href="#logo-b"/>
+      <use xlink:href="#logo-b"/>
+    </g>
+  </g>
+</svg>
