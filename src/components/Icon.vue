@@ -1,7 +1,5 @@
 <template>
-  <div class="logo">
-    
-  </div>
+  <i class="icon" :class="`ico-${name}`" />
 </template>
 
 <script>
@@ -9,21 +7,7 @@ export default {
   name: 'br-icon',
 
   props: {
-    white: Boolean
-  },
-
-  data() {
-    return {}
-  },
-
-  mounted() {},
-
-  methods: {
-    handleScroll(e) {
-      requestAnimationFrame(e => {
-        this.calc()
-      })
-    }
+    name: String
   }
 }
 </script>

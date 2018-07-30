@@ -1,0 +1,71 @@
+$round-gap: 17px;
+
+* {
+  box-sizing: border-box;
+}
+
+body,
+html {
+  height: 100vh;
+  overflow: hidden;
+  min-height: 500px;
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: $round-gap;
+  background: $primary;
+}
+
+.BROCCOLI {
+  height: 100%;
+}
+
+@include block(landing) {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  height: 100%;
+  background-image: url('//cdn.grisoso.com/airwallex/decoration.svg'), url('//cdn.grisoso.com/airwallex/illusions.svg');
+  background-repeat: no-repeat;
+  background-size: auto 50%, auto 100%;
+  background-position: top left, right top;
+
+  @include element(header) {
+    flex: 0 0 36%;
+    padding-top: 30px;
+    padding-left: 60px;
+  }
+
+  @include element(body) {
+    padding-left: 100px;
+    flex-grow: 1;
+  }
+
+  @include element(footer) {
+    flex: 0 0 50px;
+  }
+
+  @include element(slogan) {
+    margin-top: 0;
+    margin-bottom: 40px;
+    font-size: 50px;
+    line-height: 1.1;
+    font-family: 'Merriweather', serif;
+    font-weight: bold;
+
+    @include meadia-query(lg) {
+      font-size: 60px;
+    }
+  }
+
+  @include element(tip) {
+    display: block;
+    margin-top: 20px;
+    color: $primary;
+    font-weight: 300;
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+  }
+}

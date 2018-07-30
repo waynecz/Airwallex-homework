@@ -1,0 +1,9 @@
+@include block(logo) {
+  @include element(inner) {
+    width: 170px;
+
+    @include meadia-query('lg') {
+      width: 200px;
+    }
+  }
+}

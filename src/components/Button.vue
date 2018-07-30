@@ -1,7 +1,7 @@
 <template>
   <div :class="{ 'disabled': disable }" class="button" @click="handleClick">
-    <i v-if="icon" class="iconfont" :class="`ico-${icon}`"></i>
-    <slot name="icon"></slot>
+    <br-icon v-if="icon" :name="icon"/>
+    <slot name="slot-icon"></slot>
     <slot></slot>
   </div>
 </template>
@@ -12,6 +12,8 @@ export default {
 
   props: {
     icon: String,
+
+    full: Boolean,
     disable: Boolean,
     loading: Boolean
   },

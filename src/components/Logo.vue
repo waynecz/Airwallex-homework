@@ -1,6 +1,7 @@
 <template>
   <div class="logo">
-    
+    <img class="logo__inner" v-if="!white" src="//cdn.grisoso.com/airwallex/logo.svg" alt="BROCCOLI" />
+    <img class="logo__inner" v-else src="//cdn.grisoso.com/airwallex/logo-white.svg" alt="BROCCOLI" />
   </div>
 </template>
 
@@ -10,20 +11,6 @@ export default {
 
   props: {
     white: Boolean
-  },
-
-  data() {
-    return {}
-  },
-
-  mounted() {},
-
-  methods: {
-    handleScroll(e) {
-      requestAnimationFrame(e => {
-        this.calc()
-      })
-    }
   }
 }
 </script>

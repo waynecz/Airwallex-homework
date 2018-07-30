@@ -1,14 +1,16 @@
 <br>
 
 <p align="center">
-  <img width="280px" src="./src/assets/logo.svg" alt="logo" />
+  <img width="280px" src="./src/assets/logo.png" alt="logo" />
 </p>
 
 <br>
 <br>
 
 <p align="center">
+  <a href="https://github.com/waynecz/Watson">
   <img alt="watson" src="https://img.shields.io/badge/watson-1.0.0-blue.svg?style=for-the-badge"/>
+  </a>
 </p>
 
 <br>
@@ -49,6 +51,6 @@ npm run test:e2e
 
 <br>
 
-### Get sketch file
+### Get the Design
 
-Sketch raw file is accessible [here](./design) if you are interested about this design. Besides, remember to install fonts firstly
+Sketch raw file is accessible [here](./design). Remember, as well, to install fonts firstly
