@@ -17,6 +17,7 @@ Vue.use({
     Vue.prototype.$api = APIs
   }
 })
+
 window.loadComplete = () => {
   new Vue({
     render: h => h(Landing)

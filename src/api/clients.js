@@ -8,11 +8,10 @@ export const http = axios.create({
 http.interceptors.response.use(
   res => res.data,
   error => {
-    if (error.response && error.response.status === 401) {
-      window.location.href = API_HOST;
-      return;
+    if (error.response && error.response.data) {
+      return Promise.reject(error.response.data.errorMessage);
+    } else {
+      return Promise.reject(error.toString())
     }
-
-    return Promise.reject(error);
   }
 );

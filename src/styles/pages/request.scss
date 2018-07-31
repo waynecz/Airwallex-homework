@@ -16,6 +16,11 @@
     font-weight: 300;
     font-size: 18px;
     margin-bottom: 30px;
+
+    @include meadia-query(xs) {
+      font-size: 4.5vw;
+      font-weight: 400;
+    }
   }
 
   @include element(action) {
@@ -24,6 +29,10 @@
 
     &.no-tip {
       padding-bottom: 0;
+    }
+
+    @include meadia-query(xs) {
+      padding-bottom: 15vw;
     }
   }
 
@@ -42,6 +51,10 @@
     > .icon {
       font-size: 18px;
       margin-right: 5px;
+    }
+
+    @include meadia-query(xs) {
+      font-size: 11px;
     }
   }
 }

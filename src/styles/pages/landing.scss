@@ -1,21 +1,10 @@
-$round-gap: 17px;
-
-* {
-  box-sizing: border-box;
-}
-
-body,
-html {
-  height: 100vh;
-  overflow: hidden;
-  min-height: 500px;
-  font-family: 'Roboto', sans-serif;
-}
-
 body {
   margin: 0;
-  padding: $round-gap;
-  background: $primary;
+  padding: 17px;
+
+  @include meadia-query(xs) {
+    padding: 5px;
+  }
 }
 
 @include block(landing) {
@@ -29,20 +18,41 @@ body {
   background-size: auto 50%, auto 100%;
   background-position: top left, right top;
 
+  @include meadia-query(xs) {
+    background-image: url('//cdn.grisoso.com/airwallex/illusions.svg');
+    background-size: auto 100%;
+    background-position: right -10vw top;
+  }
+
   @include element(header) {
     flex: 0 0 36%;
     padding-top: 30px;
     padding-left: 60px;
+    @include perfect-transition;
+
+    @include meadia-query(xs) {
+      padding-top: 15vw;
+      padding-left: 10vw;
+      flex-basis: 30%;
+    }
 
     @include when(top) {
       position: relative;
       z-index: 2;
+
+      @include meadia-query(xs) {
+        padding-top: 5vw;
+      }
     }
   }
 
   @include element(body) {
     padding-left: 100px;
     flex-grow: 1;
+
+    @include meadia-query(xs) {
+      padding-left: 10vw;
+    }
   }
 
   @include element(footer) {
@@ -54,6 +64,15 @@ body {
     flex: 0 0 50px;
     font-size: 12px;
     font-family: "Roboto", sans-serif;
+
+    @include meadia-query(xs) {
+      width: 100%;
+      padding-left: 0;
+      flex-flow: column;
+      justify-content: center;
+      font-size: 10px;
+      color: #444;
+    }
   }
 
   @include element(slogan) {
@@ -67,6 +86,11 @@ body {
     @include meadia-query(lg) {
       font-size: 60px;
     }
+
+    @include meadia-query(xs) {
+      margin-bottom: 10vw;
+      font-size: 7.2vw;
+    }
   }
 
   @include element(tip) {
@@ -76,6 +100,10 @@ body {
     font-weight: 300;
     font-size: 20px;
     font-family: 'Roboto', sans-serif;
+
+    @include meadia-query(xs) {
+      font-size: 12px;
+    }
   }
 
   @include element(auth) {

@@ -5,5 +5,9 @@
     @include meadia-query('lg') {
       width: 200px;
     }
+
+    @include meadia-query(xs) {
+      width: 34vw;
+    }
   }
 }

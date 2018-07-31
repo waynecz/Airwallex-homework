@@ -5,6 +5,10 @@
 
   + .input {
     margin-top: 40px;
+
+    @include meadia-query(xs) {
+      margin-top: 10vw;
+    }
   }
 
   @include element(icon) {
@@ -14,6 +18,11 @@
     transform: ty(-50%);
     font-size: 30px;
     color: #4d4d4d;
+
+    @include meadia-query(xs) {
+      font-size: 6vw;
+      left: 4vw;
+    }
 
     &.ico-confirm {
       transform: ty(-40%);
@@ -28,10 +37,19 @@
     font-size: 22px;
     font-family: "Roboto", sans-serif;
 
+    @include meadia-query(xs) {
+      padding: 5vw 3vw 5vw 13vw;
+      font-size: 14px;
+    }
+
     @include placeholder {
       color: #aeaeae;
       font-size: 18px;
       font-weight: 300;
+
+      @include meadia-query(xs) {
+        font-size: 12px;
+      }
     }
 
     @include pseudo(focus) {
@@ -52,6 +70,12 @@
     height: 30px;
     transform: ty(-50%);
     background: $primary;
+
+    @include meadia-query(xs) {
+      left: -3vw;
+      height: 30px;
+      width: 4px;
+    }
   }
 
   @include element(stat) {
@@ -60,6 +84,10 @@
     right: 15px;
     transform: ty(-50%);
     font-size: 25px;
+
+    @include meadia-query(xs) {
+      font-size: 5vw;
+    }
 
     &.ico-error {
       color: $error;
@@ -77,6 +105,10 @@
     font-weight: 300;
     font-size: 12px;
     color: $error;
+
+    @include meadia-query(xs) {
+      font-size: 10px;
+    }
   }
 
   @include when(error) {

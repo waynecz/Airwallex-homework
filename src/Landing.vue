@@ -27,7 +27,7 @@
 
     <!-- Form dialog -->
     <transition name="slide-up--form">
-      <br-dialog v-show="showRequestForm" key="form" title="Request an invite" full top="20%" closeable @close="reset">
+      <br-dialog v-show="showRequestForm" key="form" title="Request an invite" full closeable @close="reset">
         <div class="request__form">
           <br-input ref="name" icon="name" :rule="rules.name" placeholder="Your full name" v-model="requestform.name" />
           <br-input ref="email" icon="email" :rule="rules.email" placeholder="Your Email" v-model="requestform.email" />
@@ -45,7 +45,7 @@
 
     <!-- All done -->
     <transition name="slide-up--done">
-      <br-dialog v-show="showSuccessNotification" key="done" title="All done" top="20%">
+      <br-dialog v-show="showSuccessNotification" key="done" title="All done">
         <div class="request__done">
           <p>You will be one of the first to experience</p>
           <p>Broccoli & Co. when we launch</p>
@@ -149,8 +149,8 @@ export default {
           this.$nextTick(() => {
             this.showSuccessNotification = true
           })
-        } catch (err) {
-          this.errorMsg = err.data ? err.data.message : err.toString()
+        } catch (error) {
+          this.errorMsg = error
         }
         this.sending = false
       }

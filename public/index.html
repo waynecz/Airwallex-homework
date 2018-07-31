@@ -100,9 +100,9 @@
     }
 
     .load__logo::before {
-      content: 'Cafeteria';
+      content: 'BROCCOLI';
       display: block;
-      height: 36px;
+      height: 50px;
     }
 
     .load__bar {
@@ -126,11 +126,11 @@
     }
 
     .load__indicator[stage="1"] {
-      transition-duration: 0.08s;
+      transition-duration: 0.04s;
     }
 
     .load__indicator[stage="2"] {
-      transition-duration: 0.09s;
+      transition-duration: 0.04s;
     }
 
     .load__indicator[stage="3"] {
@@ -155,6 +155,34 @@
       font-weight: bold;
       font-family: sans-serif;
       content: attr(percent);
+    }
+
+    @media only screen and (max-width: 768px) {
+
+      .load__content {
+        width: 60%;
+        margin: auto;
+        text-align: center;
+      }
+
+      .load__bar {
+        padding: 0 10vw;
+      }
+
+      .load__logo {
+        width: 40vw;
+        height: auto;
+      }
+
+      .load__indicator {
+        width: 10px;
+        height: 10px;
+        transform: translateY(-50%);
+      }
+
+      .load__indicator::after {
+        display: none;
+      }
     }
   </style>
   <script>
