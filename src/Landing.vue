@@ -26,12 +26,12 @@
     </transition>
 
     <!-- Form dialog -->
-    <transition name="slide-up--form">
+    <transition name="slide-up--form" @after-enter="afterFormEnter">
       <br-dialog v-show="showRequestForm" key="form" title="Request an invite" full closeable @close="reset">
         <div class="request__form">
-          <br-input ref="name" icon="name" :rule="rules.name" placeholder="Your full name" v-model="requestform.name" />
-          <br-input ref="email" icon="email" :rule="rules.email" placeholder="Your Email" v-model="requestform.email" />
-          <br-input ref="emailConfirm" icon="confirm" :rule="rules.emailConfirm" placeholder="Confirm Email" v-model="emailConfirm" />
+          <br-input ref="name" icon="name" :rule="rules.name" placeholder="Your full name" v-model="requestform.name" @enter="sendRequest" />
+          <br-input ref="email" icon="email" :rule="rules.email" placeholder="Your Email" v-model="requestform.email" @enter="sendRequest" />
+          <br-input ref="emailConfirm" icon="confirm" :rule="rules.emailConfirm" placeholder="Confirm Email" v-model="emailConfirm" @enter="sendRequest" />
         </div>
         <div class="request__action">
           <br-button icon="send" :loading="sending" full @click="sendRequest">Send</br-button>
@@ -45,7 +45,7 @@
 
     <!-- All done -->
     <transition name="slide-up--done">
-      <br-dialog v-show="showSuccessNotification" key="done" title="All done">
+      <br-dialog class="dialog--done" v-show="showSuccessNotification" key="done" title="All done">
         <div class="request__done">
           <p>You will be one of the first to experience</p>
           <p>Broccoli & Co. when we launch</p>
@@ -190,6 +190,11 @@ export default {
       const keys = Object.keys(validteStatus)
       // reset validate statis
       keys.forEach(prop => $refs[prop].resetValidstat())
+    },
+
+    afterFormEnter(element) {
+      const nameInput = element.querySelector('input')
+      nameInput && nameInput.focus()
     }
   }
 }

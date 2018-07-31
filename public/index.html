@@ -67,9 +67,16 @@
     html {
       height: 100vh;
       overflow: hidden;
-      min-height: 500px;
+      min-height: 600px;
       background-color: #193BC9;
       font-family: 'Roboto', sans-serif;
+    }
+
+    @media only screen and (max-height: 600px) {
+      body,
+      html {
+        overflow-y: auto;
+      }
     }
 
     .load {

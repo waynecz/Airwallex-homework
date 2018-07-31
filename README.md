@@ -1,4 +1,5 @@
 <br>
+<br>
 
 <p align="center">
   <img width="280px" src="./src/assets/logo.png" alt="logo" />
@@ -9,7 +10,7 @@
 
 <p align="center">
   <a href="https://github.com/waynecz/Watson">
-  <img alt="watson" src="https://img.shields.io/badge/watson-1.0.0-blue.svg?style=for-the-badge"/>
+  <img alt="watson" src="https://img.shields.io/badge/watson-1.0.4-blue.svg?style=for-the-badge"/>
   </a>
 </p>
 
@@ -26,8 +27,8 @@
 ### Project setup
 
 ```bash
-#1. Link dev.grisoso.com with your localhost
-# It's vital or you'll not be allowed to access images
+#1. Parse dev.grisoso.com to your localhost
+# It's important or you'll not be allowed to access images
 sudo vi /etc/hosts
 
 #...
@@ -51,6 +52,18 @@ npm run test:e2e
 
 <br>
 
+### Pay attention
+
+- The CDN node is Shanhai, visit from Melbourne, as a result, will have a high Ping
+
+<br>
+
 ### Get the Design
 
 Sketch raw file is accessible [here](./design). Remember, as well, to install fonts firstly
+
+<br>
+
+### Screenshots
+
+![](./src/assets/screenshot.jpg)

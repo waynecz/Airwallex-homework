@@ -6,7 +6,8 @@
     <br-icon class="input__icon" :name="icon || 'heart'"/>
     <input 
       @blur="validate"
-      type="text" 
+      type="text"
+      @keydown.enter="$emit('enter')"
       v-bind="$attrs" 
       class="input__inner" 
       :value="value" 
