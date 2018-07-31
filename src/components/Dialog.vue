@@ -1,6 +1,10 @@
 <template>
-  <div class="dialog">
-    
+  <div class="dialog" :class="{ 'is-full': full }" :style="{ top }">
+    <div v-if="closeable" class="dialog__close" @click="e => $emit('close')">close</div>
+    <h4 class="dialog__title">{{title}}</h4>
+    <div class="dialog__body">
+      <slot></slot>
+    </div>
   </div>
 </template>
 
@@ -9,21 +13,11 @@ export default {
   name: 'br-dialog',
 
   props: {
-    white: Boolean
-  },
+    title: String,
+    top: String,
 
-  data() {
-    return {}
-  },
-
-  mounted() {},
-
-  methods: {
-    handleScroll(e) {
-      requestAnimationFrame(e => {
-        this.calc()
-      })
-    }
+    full: Boolean,
+    closeable: Boolean
   }
 }
 </script>

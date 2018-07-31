@@ -18,11 +18,8 @@ body {
   background: $primary;
 }
 
-.BROCCOLI {
-  height: 100%;
-}
-
 @include block(landing) {
+  position: relative;
   display: flex;
   flex-direction: column;
   background: #fff;
@@ -36,6 +33,11 @@ body {
     flex: 0 0 36%;
     padding-top: 30px;
     padding-left: 60px;
+
+    @include when(top) {
+      position: relative;
+      z-index: 2;
+    }
   }
 
   @include element(body) {
@@ -44,7 +46,14 @@ body {
   }
 
   @include element(footer) {
+    display: flex;
+    width: 60%;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 100px;
     flex: 0 0 50px;
+    font-size: 12px;
+    font-family: "Roboto", sans-serif;
   }
 
   @include element(slogan) {
@@ -67,5 +76,16 @@ body {
     font-weight: 300;
     font-size: 20px;
     font-family: 'Roboto', sans-serif;
+  }
+
+  @include element(auth) {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+
+    > .icon {
+      margin: 0 5px;
+      color: $error;
+    }
   }
 }

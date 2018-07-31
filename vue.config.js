@@ -1,3 +1,5 @@
+const path = require('path')
+
 module.exports = {
   devServer: {
     disableHostCheck: true
@@ -8,5 +10,9 @@ module.exports = {
         includes: ['node_modules']
       }
     }
+  },
+  chainWebpack: config => {
+    config.resolve.alias
+      .set('@', path.resolve(__dirname, 'src'))
   }
 }

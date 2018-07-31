@@ -18,13 +18,37 @@
     margin-right: 15px;
   }
 
-  @include when(full) {
-    width: 100%;
+  > .ico-send {
+    transform: ty(-2px);
   }
 
   @include pseudo(hover) {
-    transform: ty(-1px);
-    box-shadow: 0 28px 29px -20px rgba(19, 32, 141, 0.5);
+    background: mix($primary, white, 94);
+  }
+
+  @include when(full) {
+    width: 100%;
+    justify-content: center;
+  }
+
+  @include when(loading) {
+    cursor: not-allowed;
+
+    @include pseudo(hover) {
+      background: $primary;
+    }
+  }
+
+  @include element(loading) {
+    margin-right: 15px;
+    @include circle(20px);
+    border: 3px solid #fff;
+    border-top-color: transparent;
+    animation: spin .6s linear infinite;
+
+    @include pseudo(hover) {
+      background: $primary;
+    }
   }
 }
 
@@ -35,6 +59,12 @@
 
   &.star {
     margin-right: 20px;
+  }
+
+  @include when(stop) {
+    &::after, &::before {
+      animation: none;
+    }
   }
 
   @include share-rule(ring) {
@@ -90,5 +120,11 @@
   100% {
     transform: scale(2.5);
     opacity: 0;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
   }
 }

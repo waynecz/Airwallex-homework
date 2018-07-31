@@ -1,7 +1,18 @@
 <template>
-  <div :class="{ 'disabled': disable }" class="button" @click="handleClick">
-    <br-icon v-if="icon" :name="icon"/>
-    <slot name="slot-icon"></slot>
+  <div 
+    :class="{ 
+      'is-disabled': disable,
+      'is-full': full,
+      'is-loading': loading
+    }" 
+    class="button"
+    @click="handleClick"
+  >
+  
+    <br-icon v-if="icon && !loading" :name="icon" key="icon"/>
+    <slot v-if="!icon && !loading" name="slot-icon"></slot>
+    <div v-if="loading" key="loading" class="button__loading"></div>
+    
     <slot></slot>
   </div>
 </template>
@@ -20,7 +31,7 @@ export default {
 
   methods: {
     handleClick(e) {
-      if (this.disable) return
+      if (this.disable || this.loading) return
       this.$emit('click', e)
     }
   }

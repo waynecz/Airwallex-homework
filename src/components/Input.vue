@@ -1,9 +1,25 @@
 <template>
-  <div class="input">
-    <br-icon :name="icon || 'heart'"/>
-    <input type="text" class="input__inner" @change="handleChange" />
+  <div 
+    class="input"
+    :class="[`is-${statusMap[validateStat]}`]"
+  >
+    <br-icon class="input__icon" :name="icon || 'heart'"/>
+    <input 
+      @blur="validate"
+      type="text" 
+      v-bind="$attrs" 
+      class="input__inner" 
+      :value="value" 
+      @input="e => $emit('input', e.target.value)" 
+    />
+
+    <div class="input__indicator"/>
     
-    <br-icon v-if="validateStat !== -1" class="input__stat" :name="validateStatIcon"/>
+    <transition name="zoom-in">
+      <br-icon v-if="validateStat !== -1" class="input__stat" :name="validateStatIcon"/>
+    </transition>
+
+    <strong v-if="errTip" class="input__tip">{{errTip}}</strong>
   </div>
 </template>
 
@@ -16,27 +32,58 @@ export default {
     icon: String,
 
     loading: Boolean,
-    white: Boolean
+    white: Boolean,
+    rule: {
+      type: Object,
+      default: () => {
+        return {
+          validator: null,
+          message: ''
+        }
+      }
+    }
   },
 
   data() {
     return {
+      errTip: '',
+
+      /* @explain
+       * validateStat: { -1: none, 0: success, 1: error } 
+       */
       validateStat: -1,
-      statusIconsMap: ['check', 'error']
+      statusMap: ['success', 'error']
     }
   },
 
   computed: {
     validateStatIcon() {
-      const { statusIconsMap, validateStat } = this
+      const { statusMap, validateStat } = this
 
-      return statusIconsMap[validdateStat]
+      return statusMap[validateStat]
     }
   },
 
   methods: {
-    handleChange(event) {
-      const value = event.target.value
+    validate() {
+      const { validator, message } = this.rule
+      if (!validator) return true
+
+      const valid = validator(this.value)
+      if (!valid) {
+        this.errTip = message
+        this.validateStat = 1
+      } else {
+        this.errTip = ''
+        this.validateStat = 0
+      }
+
+      return valid
+    },
+
+    resetValidstat() {
+      this.errTip = ''
+      this.validateStat = -1
     }
   }
 }

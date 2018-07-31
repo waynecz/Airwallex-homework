@@ -1,7 +1,9 @@
 <template>
   <div class="logo">
-    <img class="logo__inner" v-if="!white" src="//cdn.grisoso.com/airwallex/logo.svg" alt="BROCCOLI" />
-    <img class="logo__inner" v-else src="//cdn.grisoso.com/airwallex/logo-white.svg" alt="BROCCOLI" />
+    <transition name="fade" mode="out-in">
+      <img class="logo__inner" key="1" v-if="!white" src="//cdn.grisoso.com/airwallex/logo.svg" alt="BROCCOLI" />
+      <img class="logo__inner" key="2" v-else src="//cdn.grisoso.com/airwallex/logo-white.svg" alt="BROCCOLI" />  
+    </transition>
   </div>
 </template>
 

@@ -2,8 +2,7 @@ import { API_HOST } from "./env";
 import axios from "axios";
 
 export const http = axios.create({
-  baseURL: API_HOST,
-  withCredentials: true
+  baseURL: API_HOST
 });
 
 http.interceptors.response.use(

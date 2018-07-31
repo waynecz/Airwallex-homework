@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import Landing from './Landing.vue'
+import APIs from '@/api'
+import { userInfo } from 'os';
 
 Vue.config.productionTip = false
 
@@ -10,6 +12,14 @@ componentsContext.keys().forEach(path => {
   Vue.component(component.name, component)
 })
 
-new Vue({
-  render: h => h(Landing)
-}).$mount('#app')
+Vue.use({
+  install(Vue) {
+    Vue.prototype.$api = APIs
+  }
+})
+window.loadComplete = () => {
+  new Vue({
+    render: h => h(Landing)
+  }).$mount('#app')
+}
+

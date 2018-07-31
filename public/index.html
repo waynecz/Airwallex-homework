@@ -14,16 +14,253 @@
   <link rel="preconnect" href="//at.alicdn.com">
   <link rel="preconnect" href="//cdn.grisoso.com">
   <title>BROCCOLI</title>
-  <link rel="stylesheet" href="//at.alicdn.com/t/font_767358_igdnssp2kcb.css">
-  <link href="https://fonts.googleapis.com/css?family=Merriweather:400,700|Roboto:300,400" rel="stylesheet">
+  <link rel="stylesheet" href="//at.alicdn.com/t/font_767358_d6jf5d39o2.css">
+  <script src="//shadow.elemecdn.com/lib/Cafeteria@1.0.0/webfont.js"></script>
+  <script>
+    // Use font-loader to make sure that window.onload been triggeied after fonts loaded
+    WebFont.load({
+      classes: false,
+      custom: {
+        families: ['Merriweather:n4,n7', 'Roboto:n3,n4']
+      }
+    });
+  </script>
+  <style>
+    @font-face {
+      font-family: 'Merriweather';
+      font-style: normal;
+      font-weight: 400;
+      src: local('Merriweather Regular'), local('Merriweather-Regular'), url(//cdn.grisoso.com/airwallex/Merroweather-400.woff2) format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+
+    @font-face {
+      font-family: 'Merriweather';
+      font-style: normal;
+      font-weight: 700;
+      src: local('Merriweather Bold'), local('Merriweather-Bold'), url(//cdn.grisoso.com/airwallex/Merriweather-700.woff2) format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+
+    @font-face {
+      font-family: 'Roboto';
+      font-style: normal;
+      font-weight: 300;
+      src: local('Roboto Light'), local('Roboto-Light'), url(//cdn.grisoso.com/airwallex/Roboto-300.woff2) format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+
+    @font-face {
+      font-family: 'Roboto';
+      font-style: normal;
+      font-weight: 400;
+      src: local('Roboto'), local('Roboto-Regular'), url(//cdn.grisoso.com/airwallex/Roboto-400.woff2) format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+  </style>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body,
+    html {
+      height: 100vh;
+      overflow: hidden;
+      min-height: 500px;
+      background-color: #193BC9;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .load {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 10;
+      display: flex;
+      width: 100vw;
+      height: 100vh;
+      transition: 1s cubic-bezier(0.4, 0, 0.2, 1);
+      background-color: #193BC9;
+    }
+
+    .load.done {
+      opacity: 0;
+    }
+
+    .load__content {
+      width: 93%;
+      margin: auto;
+      text-align: center;
+    }
+
+    .load__logo {
+      height: 50px;
+      margin-bottom: 75px;
+    }
+
+    .load__logo::before {
+      content: 'Cafeteria';
+      display: block;
+      height: 36px;
+    }
+
+    .load__bar {
+      position: relative;
+      padding: 0 5vw;
+      height: 2px;
+      background: #fff
+    }
+
+    .load__indicator {
+      position: absolute;
+      left: 1%;
+      width: 16px;
+      height: 16px;
+      transform: translateY(-50%);
+      border-radius: 50%;
+      background: #fff;
+      will-change: left;
+      contain: layout;
+      transition-timing-function: linear;
+    }
+
+    .load__indicator[stage="1"] {
+      transition-duration: 0.08s;
+    }
+
+    .load__indicator[stage="2"] {
+      transition-duration: 0.09s;
+    }
+
+    .load__indicator[stage="3"] {
+      transition-duration: 0.13s;
+    }
+
+    .load__indicator[stage="4"] {
+      transition-duration: 0.35s;
+    }
+
+    .load__indicator[stage="end"] {
+      transition-duration: 0.02s;
+    }
+
+    .load__indicator::after {
+      position: absolute;
+      top: -25px;
+      left: 50%;
+      transform: translateX(-30%);
+      font-size: 17px;
+      color: #fff;
+      font-weight: bold;
+      font-family: sans-serif;
+      content: attr(percent);
+    }
+  </style>
+  <script>
+    window.startLoad = new Event('startLoad');
+
+    window.__LOAD_PERCENT__ = 0
+    window.__LOAD_STAGE__ = 1
+    window.__LOAD_STEP__ = 1
+
+    const PERIOD_OF_STAGE = {
+      1: 40,
+      2: 40,
+      3: 120,
+      4: 350,
+      end: 20
+    }
+
+    const loadChecker = _ => {
+      window.__LOAD_PERCENT__ += window.__LOAD_STEP__
+      const { __LOAD_PERCENT__, __LOAD_STAGE__, __LOAD_STEP__ } = window
+
+      if (__LOAD_STAGE__ === 'end') {
+        if (__LOAD_PERCENT__ + __LOAD_STEP__ > 100) {
+          window.__LOAD_STEP__ = Math.abs(100 - __LOAD_PERCENT__)
+        }
+
+        /**
+         * @summary The real load completion
+         */
+        if (__LOAD_PERCENT__ >= 100) {
+          window.loadComplete()
+          setTimeout(_ => {
+            document.getElementById("loadBox").classList.add("done");
+          }, 10)
+
+          return clearInterval(window.loadTimer)
+        }
+
+        return requestAnimationFrame(updatePercent)
+      }
+
+      if (__LOAD_PERCENT__ > 97) return
+
+      if (__LOAD_PERCENT__ > 39) resetTimer(2)
+
+      if (__LOAD_PERCENT__ > 70) resetTimer(3)
+
+      if (__LOAD_PERCENT__ > 90) resetTimer(4)
+
+      requestAnimationFrame(updatePercent)
+    }
+
+    const setTimer = stage => {
+      window.loadTimer = setInterval(loadChecker, PERIOD_OF_STAGE[stage])
+    }
+
+    window.resetTimer = stage => {
+      clearInterval(window.loadTimer)
+      window.__LOAD_STAGE__ = stage
+      setTimer(stage)
+    }
+
+    window.updatePercent = _ => {
+      window.indicator.setAttribute('percent', window.__LOAD_PERCENT__ + 1 + '%')
+      window.indicator.setAttribute('stage', window.__LOAD_STAGE__)
+      window.indicator.style.left = window.__LOAD_PERCENT__ + '%'
+    }
+
+    window.addEventListener('startLoad', e => {
+      window.indicator = document.getElementById('indicator')
+
+      window.loadBox.addEventListener('transitionend', e => {
+        if (e.target === window.loadBox) {
+          window.loadBox.remove()
+        }
+      })
+      setTimer(1)
+    })
+  </script>
 </head>
 
 <body>
   <noscript>
     <strong>We're sorry but BROCCOLI doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
   </noscript>
+  <div class="load" id="loadBox">
+    <div class="load__content">
+      <img src="//cdn.grisoso.com/airwallex/logo-white.svg" alt="broccoli-logo" class="load__logo">
+      <div class="load__bar">
+        <div id="indicator" class="load__indicator" percent="1%"></div>
+      </div>
+    </div>
+  </div>
+  <!-- 在业务脚本前开始加载动画 -->
+  <script>
+    window.dispatchEvent(startLoad)
+  </script>
   <div id="app"></div>
   <!-- built files will be auto injected -->
 </body>
+<script>
+  // --------------------> Load event will detect css / script / fonts / image <---------------------
+  window.addEventListener('load', _ => {
+    window.__LOAD_STEP__ = 5
+    window.resetTimer('end')
+  })
+</script>
 
 </html>

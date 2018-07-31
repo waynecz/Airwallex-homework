@@ -1,4 +1,4 @@
-import { API_HOST_MAP } from "@/src/config/hosts";
+import { API_HOST_MAP } from "@/config/hosts";
 
 const HOST = location.host;
 

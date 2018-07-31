@@ -1,0 +1,93 @@
+@include block(input) {
+  position: relative;
+  display: flex;
+  background: #efefef;
+
+  + .input {
+    margin-top: 40px;
+  }
+
+  @include element(icon) {
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: ty(-50%);
+    font-size: 30px;
+    color: #4d4d4d;
+
+    &.ico-confirm {
+      transform: ty(-40%);
+    }
+  }
+
+  @include element(inner) {
+    width: 100%;
+    border: none;
+    padding: 23px 70px;
+    background: transparent;
+    font-size: 22px;
+    font-family: "Roboto", sans-serif;
+
+    @include placeholder {
+      color: #aeaeae;
+      font-size: 18px;
+      font-weight: 300;
+    }
+
+    @include pseudo(focus) {
+      outline: none;
+
+      @include custom-selector('+', indicator) {
+        display: block;
+      }
+    }
+}
+
+  @include element(indicator) {
+    position: absolute;
+    left: -23px;
+    top: 50%;
+    display: none;
+    width: 6px;
+    height: 30px;
+    transform: ty(-50%);
+    background: $primary;
+  }
+
+  @include element(stat) {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: ty(-50%);
+    font-size: 25px;
+
+    &.ico-error {
+      color: $error;
+    }
+
+    &.ico-success {
+      color: $success;
+    }
+  }
+
+  @include element(tip) {
+    position: absolute;
+    left: 20px;
+    bottom: -20px;
+    font-weight: 300;
+    font-size: 12px;
+    color: $error;
+  }
+
+  @include when(error) {
+    @include element(indicator) {
+      background: $error;
+    }
+  }
+
+  @include when(success) {
+    @include element(indicator) {
+      background: $success;
+    }
+  }
+}
