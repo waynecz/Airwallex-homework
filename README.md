@@ -60,7 +60,9 @@ npm run test:e2e
 
 ### Get the Design
 
-Sketch raw file is accessible [here](./design). Remember, as well, to install fonts firstly
+Sketch raw file is accessible [here](./design). Remember, as well, to install fonts firstly:
+- [Merriweather](https://github.com/EbenSorkin/Merriweather/tree/master/fonts/otf) *Bold / Regular*
+- [Roboto](https://github.com/google/roboto/releases/tag/v2.138) *Light / Regular*
 
 <br>
 
